@@ -8,15 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.room.Room
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-//    private val users : MutableLiveData<List<User>> by lazy {
-//        MutableLiveData<List<User>>().also {
-//            loadUsers()
-//        }
-//    }
-//    private fun loadUsers(){
-//        Room.databaseBuilder(application, AppDatabase::class.java, "todo").allowMainThreadQueries()
-//            .build()
-//    }
 
     private val db = Room.databaseBuilder(application, AppDatabase::class.java, "todo").allowMainThreadQueries().build()
 
