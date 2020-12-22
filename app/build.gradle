@@ -5,8 +5,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
 
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdkVersion 29
@@ -21,17 +21,24 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
     }
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures{
+        dataBinding true
+
     }
 }
 

@@ -7,26 +7,26 @@ import android.widget.EdgeEffect
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.room.Room
+import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner= this
 
-        val textView : TextView = findViewById(R.id.result_text)
-        val button : Button = findViewById(R.id.button)
-        val editText : EditText = findViewById(R.id.todo_edit)
 
         val mainViewModel : MainViewModel by viewModels()
 
-        mainViewModel.getAll().observe(this, Observer {users->
-            textView.text = users.toString()
-        } )
+        binding.viewModel = mainViewModel
 
-        button.setOnClickListener{
-            mainViewModel.insert(User(editText.text.toString()))
-        }
+//        mainViewModel.getAll().observe(this, Observer {users->
+//            binding.resultText.text = users.toString()
+//        } )
+
+
     }
 }
